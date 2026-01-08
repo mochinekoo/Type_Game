@@ -1,0 +1,12 @@
+﻿################################################################################
+# この .gitignore ファイルは Microsoft(R) Visual Studio によって自動的に作成されました。
+################################################################################
+
+/.vs
+/Type_Game/x64/Debug
+/x64/Debug
+/Log.txt
+/Type_Game.slnx
+/Type_Game.vcxproj
+/Type_Game.vcxproj.filters
+/Type_Game.vcxproj.user
