@@ -1,10 +1,11 @@
 #include "SceneManager.h"
+#include "WaitingScene.h"
 #include <Windows.h>
 
 SceneManager SceneManager::instance;
 
 SceneManager::SceneManager() {
-	currentScene = nullptr;
+	currentScene = new WaitingScene();
 }
 
 SceneManager::~SceneManager() {
