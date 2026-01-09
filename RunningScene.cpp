@@ -20,6 +20,7 @@ RunningScene::~RunningScene()
 
 void RunningScene::Init() {
 	inputHandle = MakeKeyInput(255, FALSE, FALSE, FALSE);
+	keySoundHandle = LoadSoundMem("キーボード1.mp3");
 	SetActiveKeyInput(inputHandle);
 	if (inputHandle == -1) {
 		MessageBox(NULL, "キー入力ハンドルの作成に失敗しました。", NULL, MB_OK | MB_ICONERROR);
@@ -29,8 +30,15 @@ void RunningScene::Init() {
 void RunningScene::Update() {
 	GetKeyInputString(inputString, inputHandle);
 	if (std::string(inputString)._Equal(typeManager.getCurrentWord()) && typeManager.getAmountWord() > 0) {
-		typeManager.nextWord();	
+		typeManager.nextWord();
+		SetKeyInputString("", inputHandle);
 	}
+
+	static int beforeKeyAll = 0;
+	if (CheckHitKeyAll() && keySoundHandle != -1 && beforeKeyAll == 0) {
+		PlaySoundMem(keySoundHandle, DX_PLAYTYPE_BACK);
+	}
+	beforeKeyAll = CheckHitKeyAll();
 }
 
 void RunningScene::Draw() {
