@@ -3,6 +3,12 @@
 #include <DxLib.h>
 #include "GameUtility.h"
 #include "framework.h"
+#include "TypeManager.h"
+#include "SceneManager.h"
+
+namespace {
+	TypeManager& typeManager = TypeManager::GetInstance();
+}
 
 RunningScene::RunningScene()
  : SceneBase("RunningScene"), inputString("") {
@@ -21,11 +27,13 @@ void RunningScene::Init() {
 }
 
 void RunningScene::Update() {
-
+	GetKeyInputString(inputString, inputHandle);
+	if (std::string(inputString)._Equal(typeManager.getCurrentWord()) && typeManager.getAmountWord() > 0) {
+		typeManager.nextWord();	
+	}
 }
 
 void RunningScene::Draw() {
-	GetKeyInputString(inputString, inputHandle);
-	GameUtility::DrawFix2DText(CENTER, Screen::WIDTH / 2, Screen::HEIGHT / 2, 30, "タイピング中...", Color::WHITE, Color::BLACK);
+	GameUtility::DrawFix2DText(CENTER, Screen::WIDTH / 2, Screen::HEIGHT / 2, 30, "タイピング: " + typeManager.getCurrentWord(), Color::WHITE, Color::BLACK);
 	GameUtility::DrawFix2DText(CENTER, Screen::WIDTH / 2, (Screen::HEIGHT / 2) + 50, 30, inputString, Color::WHITE, Color::BLACK);
 }
