@@ -1,6 +1,7 @@
 #include "SceneBase.h"
 
-SceneBase::SceneBase() {
+SceneBase::SceneBase(std::string name) {
+	this->name = name;
 }
 
 SceneBase::~SceneBase() {

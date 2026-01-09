@@ -3,9 +3,11 @@
 #include <assert.h>
 #include "GameUtility.h"
 #include "framework.h"
+#include "SceneManager.h"
+#include "SceneBase.h"
 
 WaitingScene::WaitingScene()
-{
+ : SceneBase("WaitingScene") {
 }
 
 WaitingScene::~WaitingScene()
@@ -17,7 +19,9 @@ void WaitingScene::Init() {
 }
 
 void WaitingScene::Update() {
-
+	if (CheckHitKey(KEY_INPUT_SPACE)) {
+		SceneManager::GetInstance().ChangeScene("RunningScene");
+	}
 }
 
 void WaitingScene::Draw() {

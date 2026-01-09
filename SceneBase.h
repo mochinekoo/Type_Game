@@ -8,8 +8,9 @@ protected:
 
 private:
 	std::string name;
-public:
 	SceneBase();
+public:
+	SceneBase(std::string name);
 	~SceneBase();
 	virtual void Init() = 0;
 	virtual void Update() = 0;
