@@ -15,7 +15,7 @@ TypeManager::~TypeManager() {
 
 void TypeManager::nextWord() {
 	if (!typeQueue.empty()) {
-		currentTypeWord = typeQueue.front();
+		currentTypeWord = typeQueue.back();
 		typeQueue.pop();
 	}
 }
