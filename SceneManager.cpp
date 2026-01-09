@@ -1,11 +1,14 @@
 #include "SceneManager.h"
 #include "WaitingScene.h"
 #include <Windows.h>
+#include "RunningScene.h"
 
 SceneManager SceneManager::instance;
 
 SceneManager::SceneManager() {
 	currentScene = new WaitingScene();
+	sceneList.push_back(currentScene);
+	sceneList.push_back(new RunningScene());
 }
 
 SceneManager::~SceneManager() {
