@@ -29,8 +29,9 @@ void RunningScene::Init() {
 
 void RunningScene::Update() {
 	GetKeyInputString(inputString, inputHandle);
-	if (std::string(inputString)._Equal(typeManager.getCurrentWord()) && typeManager.getAmountWord() > 0) {
+	if ((std::string(inputString)._Equal(typeManager.getCurrentWord()) && typeManager.getAmountWord() > 0) || timer <= 0) {
 		typeManager.nextWord();
+		timer = 100*60;
 		SetKeyInputString("", inputHandle);
 	}
 
@@ -39,9 +40,12 @@ void RunningScene::Update() {
 		PlaySoundMem(keySoundHandle, DX_PLAYTYPE_BACK);
 	}
 	beforeKeyAll = CheckHitKeyAll();
+
+	timer--;
 }
 
 void RunningScene::Draw() {
+	GameUtility::DrawFix2DText(LEFT, 10, 10, 20, "残り時間: " + std::to_string(timer / 60) + "秒", Color::WHITE, Color::BLACK);
 	GameUtility::DrawFix2DText(CENTER, Screen::WIDTH / 2, Screen::HEIGHT / 2, 30, "タイピング: " + typeManager.getCurrentWord(), Color::WHITE, Color::BLACK);
 	GameUtility::DrawFix2DText(CENTER, Screen::WIDTH / 2, (Screen::HEIGHT / 2) + 50, 30, inputString, Color::WHITE, Color::BLACK);
 }
