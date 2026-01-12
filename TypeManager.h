@@ -2,10 +2,21 @@
 #include <queue>
 #include <string>
 
+struct TypeData {
+	std::string typeWord;
+	std::string viewWord;
+
+	TypeData() {}
+
+	TypeData(std::string typeWord, std::string viewWord)
+		: typeWord(typeWord), viewWord(viewWord) {
+	}
+};
+
 class TypeManager {
 private:
-	std::queue<std::string> typeQueue;
-	std::string currentTypeWord;
+	std::queue<TypeData> typeQueue;
+	TypeData currentTypeWord;
 public:
 	TypeManager();
 	~TypeManager();
@@ -13,7 +24,7 @@ public:
 	int getAmountWord() const {
 		return static_cast<int>(typeQueue.size());
 	}
-	inline std::string getCurrentWord() const {
+	inline TypeData getCurrentWord() const {
 		return currentTypeWord;
 	}
 	static inline TypeManager& GetInstance() {
