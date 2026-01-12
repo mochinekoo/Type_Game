@@ -34,6 +34,7 @@ int initApplication() {
 
     SetBackgroundColor(Screen::BACKCOLOR[0], Screen::BACKCOLOR[1], Screen::BACKCOLOR[2]);
     SetDrawScreen(DX_SCREEN_BACK);
+    SetAlwaysRunFlag(true);
 
 	SceneManager::GetInstance().InitScene();
 
