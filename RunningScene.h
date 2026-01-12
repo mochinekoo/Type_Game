@@ -5,7 +5,7 @@ class RunningScene : public SceneBase {
 private:
 	int inputHandle = -1;
 	int keySoundHandle = -1;
-	int timer = 100;
+	float timer = 100;
 	char inputString[256];
 public:
 	RunningScene();
