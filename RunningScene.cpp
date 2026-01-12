@@ -29,9 +29,14 @@ void RunningScene::Init() {
 
 void RunningScene::Update() {
 	GetKeyInputString(inputString, inputHandle);
+	if (typeManager.getAmountWord() <= 0) {
+		SceneManager::GetInstance().ChangeScene("EndingScene");
+	}
+
 	if ((std::string(inputString)._Equal(typeManager.getCurrentWord().typeWord) && typeManager.getAmountWord() > 0) || timer <= 0) {
 		typeManager.nextWord();
 		timer = 100*60;
+		typeManager.correctCount++;
 		SetKeyInputString("", inputHandle);
 	}
 

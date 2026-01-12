@@ -18,14 +18,19 @@ private:
 	std::queue<TypeData> typeQueue;
 	TypeData currentTypeWord;
 public:
+	int correctCount = 0;
 	TypeManager();
 	~TypeManager();
 	void nextWord();
+	void loadWord();
 	int getAmountWord() const {
 		return static_cast<int>(typeQueue.size());
 	}
 	inline TypeData getCurrentWord() const {
 		return currentTypeWord;
+	}
+	inline int getCorrectCount() const {
+		return correctCount;
 	}
 	static inline TypeManager& GetInstance() {
 		static TypeManager instance;
