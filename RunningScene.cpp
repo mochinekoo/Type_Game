@@ -21,6 +21,7 @@ RunningScene::~RunningScene()
 void RunningScene::Init() {
 	inputHandle = MakeKeyInput(255, FALSE, FALSE, FALSE);
 	keySoundHandle = LoadSoundMem("キーボード1.mp3");
+	backgroundHandle = LoadGraph("background_image.png");
 	SetActiveKeyInput(inputHandle);
 	if (inputHandle == -1) {
 		MessageBox(NULL, "キー入力ハンドルの作成に失敗しました。", NULL, MB_OK | MB_ICONERROR);
@@ -54,9 +55,14 @@ void RunningScene::Update() {
 }
 
 void RunningScene::Draw() {
+	DrawGraph(0, 0, backgroundHandle, TRUE);
 	GameUtility::DrawFix2DText(LEFT, 10, 10, 20, "残り時間: " + std::to_string(timer) + "秒", Color::WHITE, Color::BLACK);
 
 	GameUtility::DrawFix2DText(CENTER, Screen::WIDTH / 2, Screen::HEIGHT / 2 - 50, 30, typeManager.getCurrentWord().viewWord, Color::WHITE, Color::BLACK);
 	GameUtility::DrawFix2DText(CENTER, Screen::WIDTH / 2, Screen::HEIGHT / 2, 30, "(" + typeManager.getCurrentWord().typeWord + ")", Color::WHITE, Color::BLACK);
 	GameUtility::DrawFix2DText(CENTER, Screen::WIDTH / 2, (Screen::HEIGHT / 2) + 50, 30, inputString, Color::WHITE, Color::BLACK);
+
+	DrawBox(0, 500, Screen::WIDTH, 520, Color::BLACK, true);
+	DrawBox(0, 500, Screen::WIDTH - ((timer / 100) * Screen::WIDTH), 520, GetColor(255, 0, 0), true);
+
 }
