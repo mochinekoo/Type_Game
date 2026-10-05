@@ -1,8 +1,8 @@
 #include "SceneManager.h"
-#include "WaitingScene.h"
+#include "../WaitingScene.h"
 #include <Windows.h>
-#include "RunningScene.h"
-#include "EndingScene.h"
+#include "../RunningScene.h"
+#include "../EndingScene.h"
 
 SceneManager SceneManager::instance;
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "SceneBase.h"
+#include "MochinekoEngine/SceneBase.h"
 #include <string>
 class RunningScene : public SceneBase {
 private:

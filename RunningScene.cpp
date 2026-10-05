@@ -1,10 +1,10 @@
 #include "RunningScene.h"
-#include "SceneBase.h"
+#include "MochinekoEngine/SceneBase.h"
 #include <DxLib.h>
-#include "GameUtility.h"
-#include "framework.h"
+#include "MochinekoEngine/GameUtility.h"
+#include "MochinekoEngine/framework.h"
 #include "TypeManager.h"
-#include "SceneManager.h"
+#include "MochinekoEngine/SceneManager.h"
 
 namespace {
 	TypeManager& typeManager = TypeManager::GetInstance();

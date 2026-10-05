@@ -1,10 +1,10 @@
 #include "WaitingScene.h"
 #include <DxLib.h>
 #include <assert.h>
-#include "GameUtility.h"
-#include "framework.h"
-#include "SceneManager.h"
-#include "SceneBase.h"
+#include "MochinekoEngine/GameUtility.h"
+#include "MochinekoEngine/framework.h"
+#include "MochinekoEngine/SceneManager.h"
+#include "MochinekoEngine/SceneBase.h"
 
 WaitingScene::WaitingScene()
  : SceneBase("WaitingScene") {
